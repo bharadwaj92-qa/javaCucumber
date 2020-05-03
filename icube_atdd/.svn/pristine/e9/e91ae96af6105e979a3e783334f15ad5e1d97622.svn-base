@@ -1,0 +1,33 @@
+package com.optum.icube.qc.testrunner;
+
+import java.io.File;
+import org.junit.runner.RunWith;
+import org.testng.annotations.AfterSuite;
+
+import com.cucumber.listener.Reporter;
+//import com.gargoylesoftware.htmlunit.javascript.host.file.File;
+
+import cucumber.api.CucumberOptions;
+import cucumber.api.junit.Cucumber;
+
+@RunWith(CucumberNew.class)
+/*@CucumberOptions(features = "classpath:features/PE_Smoke/TMADischarge.feature", plugin = { "pretty", "html:target/atdd-report" }, glue = {
+        "com.optum.icube.qc.stepdef" }, tags = {})
+*/
+@CucumberOptions(features = "classpath:features/PE_Smoke/", plugin = { "html:target/atdd-report",
+		"json:target/Report/Cucumber-json/cucumber.json", "pretty:target/Report/Cucumber-pretty/cucumber-pretty.txt",
+		"com.cucumber.listener.ExtentCucumberFormatter:target/Report/Cucumber-extent/PE_SMOKE_TEST_RUN.html" }, glue = {
+		"com.optum.icube.qc.stepdef" }, tags = {})
+public class PETestRunner {
+	@AfterSuite
+	public static void test() {
+
+	//Config.deleteFiles();
+	Reporter.loadXMLConfig(new File("src/test/resources/report-config.xml"));
+	Reporter.setSystemInfo("Time Zone", System.getProperty("user.timezone"));
+	Reporter.setSystemInfo("Environment", "QA3");
+	Reporter.setSystemInfo("user", System.getProperty("user.name"));
+	Reporter.setSystemInfo("64 Bit", "Windows OS");
+	Reporter.setTestRunnerOutput("Linx test runner output message");
+}
+}

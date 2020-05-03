@@ -1,0 +1,198 @@
+#Author: Shiva Sankara Rao
+#Email : shivasankar_pabbu@optum.com
+Feature: Provider Express Login
+[34mCurrent Page URL ishttps://test-healthid.optum.com/tb/app/index.html?TARGET=https%3A%2F%2Fohpe-test2.optum.com%2Ftrans%2FoptumLoggedIn.uol&relyingAppId=OHPE68865#/login[0m
+
+  @Login
+  Scenario: Provider Express Login                               [90m# features/PE_Smoke/AALogin.feature:7[0m
+    [32mGiven [0m[32mUser logged into PE Application with Valid Credentials[0m [90m# CommonLoginDefinition.login()[0m
+#Author: Mohammad A Abbasi
+#Email : mohammad_a_abbasi@optum.com
+Feature: TMA form submission
+  
+  In order to allow a member to admit under a facility
+  As a Provider Express user
+  I want the user to allow for the TMA form submission
+
+  @TMA
+  Scenario Outline: Verify TMA submission                                                                                                                                                                                                                                       [90m# features/PE_Smoke/ATMASubmission.feature:12[0m
+    [36mAnd [0m[36mSelects ReviewOnline[0m
+    [36mAnd [0m[36mselects Request an initial authorization for admission radio[0m
+    [36mAnd [0m[36mclick Continue button[0m
+    [36mAnd [0m[36mselects Member Search tab[0m
+    [36mAnd [0m[36menters "<MemberId>" and First Name "<FirstName>"[0m
+    [36mAnd [0m[36mclick Proceed to Step two button[0m
+    [36mAnd [0m[36mselect a dropdown value from the Facility Address dropdown[0m
+    [36mAnd [0m[36mclick Proceed to Step three button[0m
+    [36mAnd [0m[36muser will be in qualification page[0m
+    [36mAnd [0m[36mnavigating to FIR by giving  Member Admitted "<MemberAdmitted>" select Admit Date "<AdmitDate>" and diagnosis "<PrimaryDiag>" and select the dropdown based on "<Description>" and Involuntary admission "<InvoluntaryAdmit>" and level of care being requested "<Loc>"[0m
+    [36mAnd [0m[36mclick Proceed to Step four button[0m
+    [36mAnd [0m[36muser will see TMA form[0m
+    [36mAnd [0m[36mselect the Attending MD details by clicking MD Search and Ennter "<URName>" and "<URPhone>"[0m
+    [36mAnd [0m[36mselect benefit type as MH[0m
+    [36mAnd [0m[36mclick on attestation check box[0m
+    [36mWhen [0m[36muser clicks on Submit button[0m
+    [36mThen [0m[36muser should see the Confirmation number[0m
+
+    Examples: 
+[34mCurrent Page URL ishttps://ohpe-test2.optum.com/trans/mainMenu.uol[0m
+
+  @TMA
+  Scenario Outline: Verify TMA submission                                                                                                                                                                                                                       [90m# features/PE_Smoke/ATMASubmission.feature:35[0m
+    [32mAnd [0m[32mSelects ReviewOnline[0m                                                                                                                                                                                                                                    [90m# NavigationPEQualificatio.selectMenuLink()[0m
+    [32mAnd [0m[32mselects Request an initial authorization for admission radio[0m                                                                                                                                                                                            [90m# NavigationPEQualificatio.selectAuthAdmitionRadio()[0m
+    [32mAnd [0m[32mclick Continue button[0m                                                                                                                                                                                                                                   [90m# NavigationPEQualificatio.goToNextPage()[0m
+    [32mAnd [0m[32mselects Member Search tab[0m                                                                                                                                                                                                                               [90m# FIRnavigation.selectMemberSearchTab()[0m
+    [32mAnd [0m[32menters "[0m[32m[1m562631476[0m[32m" and First Name "[0m[32m[1mDINA[0m[32m"[0m                                                                                                                                                                                                                [90m# FIRnavigation.searchByMemberIdAndFName(String,String)[0m
+    [32mAnd [0m[32mclick Proceed to Step two button[0m                                                                                                                                                                                                                        [90m# FIRnavigation.proceedToStep2()[0m
+    [32mAnd [0m[32mselect a dropdown value from the Facility Address dropdown[0m                                                                                                                                                                                              [90m# FIRnavigation.selectFacilityAddress()[0m
+    [32mAnd [0m[32mclick Proceed to Step three button[0m                                                                                                                                                                                                                      [90m# NavigationPEQualificatio.preceedToStep3()[0m
+    [32mAnd [0m[32muser will be in qualification page[0m                                                                                                                                                                                                                      [90m# TMASubmission.user_will_be_in_qualification_page()[0m
+    [32mAnd [0m[32mnavigating to FIR by giving  Member Admitted "[0m[32m[1mYes[0m[32m" select Admit Date "[0m[32m[1m06/27/2018[0m[32m" and diagnosis "[0m[32m[1mF40.00-Agoraphobia[0m[32m" and select the dropdown based on "[0m[32m[1mF40.00-Agoraphobia[0m[32m" and Involuntary admission "[0m[32m[1mNO[0m[32m" and level of care being requested "[0m[32m[1mInpatient[0m[32m"[0m [90m# FIRnavigation.dataUnderQualifypage(String,String,String,String,String,String)[0m
+    [32mAnd [0m[32mclick Proceed to Step four button[0m                                                                                                                                                                                                                       [90m# FIRnavigation.proceedToStep4()[0m
+    [32mAnd [0m[32muser will see TMA form[0m                                                                                                                                                                                                                                  [90m# TMASubmission.user_will_see_TMA_form()[0m
+    [32mAnd [0m[32mselect the Attending MD details by clicking MD Search and Ennter "[0m[32m[1mAbbasi[0m[32m" and "[0m[32m[1m7777777777777[0m[32m"[0m                                                                                                                                                           [90m# FIRProviderTab.TMASubmit(String,String)[0m
+    [32mAnd [0m[32mselect benefit type as MH[0m                                                                                                                                                                                                                               [90m# TMASubmission.select_BenefitType()[0m
+    [32mAnd [0m[32mclick on attestation check box[0m                                                                                                                                                                                                                          [90m# TMASubmission.click_on_attestation_check_box()[0m
+    [32mWhen [0m[32muser clicks on Submit button[0m                                                                                                                                                                                                                           [90m# TMASubmission.user_clicks_on_Submit_button()[0m
+    [32mThen [0m[32muser should see the Confirmation number[0m                                                                                                                                                                                                                [90m# TMASubmission.user_should_see_the_Confirmation_number()[0m
+#Author: Jatin Sharma
+#Email : jatin_sharma@optum.com
+Feature: TMO form submission
+  
+  In order to allow the patient for the extended stay
+  As a Provider Express user
+  I want the user to allow for the TMO form submission
+
+  @TMO
+  Scenario Outline: Verify TMO submission                                                                [90m# features/PE_Smoke/BTMOSubmission.feature:10[0m
+    [36mAnd [0m[36mSelects ReviewOnline[0m
+    [36mAnd [0m[36mselect View my Census radio button[0m
+    [36mAnd [0m[36mclick on the Continue button[0m
+    [36mAnd [0m[36min the next page click on the MyPatient is not on the census tab[0m
+    [36mAnd [0m[36muser is in the patient list page[0m
+    [36mAnd [0m[36muser clicks on the link for the "<MemName>" for member[0m
+    [36mAnd [0m[36mTMO form is opened with the default Member tab displaying[0m
+    [36mAnd [0m[36muser enters "<MemberContPhone>" for Member Contact Phone[0m
+    [36mAnd [0m[36muser selects Legal Guardian as No[0m
+    [36mAnd [0m[36muser clicks on Next button[0m
+    [36mAnd [0m[36muser will see Provider tab[0m
+    [36mAnd [0m[36muser clicks on Next button[0m
+    [36mAnd [0m[36muser will see Service tab[0m
+    [36mAnd [0m[36muser enters "<AddtnlDaysReq>" Additional number of days requested[0m
+    [36mAnd [0m[36muser selects Involuntary status as Involuntry[0m
+    [36mAnd [0m[36muser selects Court Ordered as No[0m
+    [36mAnd [0m[36muser selects Are there any Active Medical Conditions as No[0m
+    [36mAnd [0m[36muser selects Primary precipitant/circumstances that led to this admission[0m
+    [36mAnd [0m[36muser enters "<addtnlDetailSpecificEvent>" for Provide additional detail about the specific event[0m
+    [36mAnd [0m[36muser selects No for Was substance use a contributing reason for admission[0m
+    [36mAnd [0m[36muser enters "<CurrentUncontrolledSymptoms>" for CurrentUncontrolledSymptoms text field[0m
+    [36mAnd [0m[36muser Clicks on Next button[0m
+    [36mAnd [0m[36muser will see Medication tab[0m
+    [36mAnd [0m[36muser selects No for Is the member on any current medications[0m
+    [36mAnd [0m[36muser clicks on Next button[0m
+    [36mAnd [0m[36muser will see Review tab[0m
+    [36mAnd [0m[36muser enters "<SpecificActions>" for SpecificActions field[0m
+    [36mAnd [0m[36muser selects the dropdown value from  Facility Planned Discharge LOC[0m
+    [36mAnd [0m[36muser enters "<ELOS>" for ELOS[0m
+    [36mAnd [0m[36muser enters "<DCPlan>" for Discharge Plan[0m
+    [36mAnd [0m[36muser enters "<BarriersToDC>" for field BarrierTODC field[0m
+    #42.for now covered under method 'provideDCPlan'
+    [36mAnd [0m[36muser clicks on Next button[0m
+    [36mAnd [0m[36muser will see the Confirmation & Attestation page[0m
+    [36mAnd [0m[36muser selects Yes for Disclaimer[0m
+    [36mAnd [0m[36muser selects I Attest checkbox[0m
+    [36mWhen [0m[36muser clicks on Submit button on confirmation page[0m
+    [36mThen [0m[36muser should see the Confirmation pop-up message[0m
+
+    Examples: 
+[34mCurrent Page URL ishttps://ohpe-test2.optum.com/trans/mainMenu.uol[0m
+
+  @TMO
+  Scenario Outline: Verify TMO submission                                                                [90m# features/PE_Smoke/BTMOSubmission.feature:55[0m
+    [32mAnd [0m[32mSelects ReviewOnline[0m                                                                             [90m# NavigationPEQualificatio.selectMenuLink()[0m
+    [32mAnd [0m[32mselect View my Census radio button[0m                                                               [90m# TMOSubmission.select_View_my_Census_radio_button()[0m
+    [32mAnd [0m[32mclick on the Continue button[0m                                                                     [90m# TMOSubmission.click_on_the_Continue_button()[0m
+    [32mAnd [0m[32min the next page click on the MyPatient is not on the census tab[0m                                 [90m# TMOSubmission.in_the_next_page_click_on_the_MyPatient_is_not_on_the_census_tab()[0m
+    [32mAnd [0m[32muser is in the patient list page[0m                                                                 [90m# TMOSubmission.user_is_in_the_patient_list_page()[0m
+    [32mAnd [0m[32muser clicks on the link for the "[0m[32m[1mFIORENTINO_DINA[0m[32m" for member[0m                                     [90m# TMOSubmission.user_clicks_on_the_link_for_the_for_member(String)[0m
+    [32mAnd [0m[32mTMO form is opened with the default Member tab displaying[0m                                        [90m# TMOSubmission.tmo_form_is_opened_with_the_default_Member_tab_displaying()[0m
+    [32mAnd [0m[32muser enters "[0m[32m[1m7777777777777[0m[32m" for Member Contact Phone[0m                                             [90m# TMOSubmission.user_enters_for_Member_Contact_Phone(String)[0m
+    [32mAnd [0m[32muser selects Legal Guardian as No[0m                                                                [90m# TMOSubmission.user_selects_Legal_Guardian_as_No()[0m
+    [32mAnd [0m[32muser clicks on Next button[0m                                                                       [90m# TMOSubmission.user_clicks_on_Next_button()[0m
+    [32mAnd [0m[32muser will see Provider tab[0m                                                                       [90m# TMOSubmission.user_will_see_Provider_tab()[0m
+    [32mAnd [0m[32muser clicks on Next button[0m                                                                       [90m# TMOSubmission.user_clicks_on_Next_button()[0m
+    [32mAnd [0m[32muser will see Service tab[0m                                                                        [90m# TMOSubmission.user_will_see_Service_tab()[0m
+    [32mAnd [0m[32muser enters "[0m[32m[1m1[0m[32m" Additional number of days requested[0m                                              [90m# TMOSubmission.user_enters_Additional_number_of_days_requested(String)[0m
+    [32mAnd [0m[32muser selects Involuntary status as Involuntry[0m                                                    [90m# TMOSubmission.user_selects_Involuntary_status_as_Involuntry()[0m
+    [32mAnd [0m[32muser selects Court Ordered as No[0m                                                                 [90m# TMOSubmission.user_selects_Court_Ordered_as_No()[0m
+    [32mAnd [0m[32muser selects Are there any Active Medical Conditions as No[0m                                       [90m# TMOSubmission.user_selects_Are_there_any_Active_Medical_Conditions_as_No()[0m
+    [32mAnd [0m[32muser selects Primary precipitant/circumstances that led to this admission[0m                        [90m# TMOSubmission.user_selects_Primary_precipitant_circumstances_that_led_to_this_admission()[0m
+    [32mAnd [0m[32muser enters "[0m[32m[1m<addtnlDetailSpecificEvent>[0m[32m" for Provide additional detail about the specific event[0m [90m# TMOSubmission.user_enters_for_Provide_additional_detail_about_the_specific_event(String)[0m
+    [32mAnd [0m[32muser selects No for Was substance use a contributing reason for admission[0m                        [90m# TMOSubmission.user_selects_No_for_Was_substance_use_a_contributing_reason_for_admission()[0m
+    [32mAnd [0m[32muser enters "[0m[32m[1mtesting[0m[32m" for CurrentUncontrolledSymptoms text field[0m                                 [90m# TMOSubmission.user_enters_for_CurrentUncontrolledSymptoms_text_field(String)[0m
+    [32mAnd [0m[32muser Clicks on Next button[0m                                                                       [90m# TMOSubmission.user_Clicks_on_Next_button()[0m
+    [32mAnd [0m[32muser will see Medication tab[0m                                                                     [90m# TMOSubmission.user_will_see_Medication_tab()[0m
+    [32mAnd [0m[32muser selects No for Is the member on any current medications[0m                                     [90m# TMOSubmission.user_selects_No_for_Is_the_member_on_any_current_medications()[0m
+    [32mAnd [0m[32muser clicks on Next button[0m                                                                       [90m# TMOSubmission.user_clicks_on_Next_button()[0m
+    [32mAnd [0m[32muser will see Review tab[0m                                                                         [90m# TMOSubmission.user_will_see_Review_tab()[0m
+    [32mAnd [0m[32muser enters "[0m[32m[1mtesting[0m[32m" for SpecificActions field[0m                                                  [90m# TMOSubmission.user_enters_for_SpecificActions_field(String)[0m
+    [32mAnd [0m[32muser selects the dropdown value from  Facility Planned Discharge LOC[0m                             [90m# TMOSubmission.user_selects_the_dropdown_value_from_Facility_Planned_Discharge_LOC()[0m
+    [32mAnd [0m[32muser enters "[0m[32m[1m6[0m[32m" for ELOS[0m                                                                         [90m# TMOSubmission.user_enters_for_ELOS(String)[0m
+    [32mAnd [0m[32muser enters "[0m[32m[1mtesting[0m[32m" for Discharge Plan[0m                                                         [90m# TMOSubmission.user_enters_for_Discharge_Plan(String)[0m
+    [32mAnd [0m[32muser enters "[0m[32m[1mtesting[0m[32m" for field BarrierTODC field[0m                                                [90m# TMOSubmission.user_enters_for_field_BarrierTODC_field(String)[0m
+    #42.for now covered under method 'provideDCPlan'
+    [32mAnd [0m[32muser clicks on Next button[0m                                                                       [90m# TMOSubmission.user_clicks_on_Next_button()[0m
+    [32mAnd [0m[32muser will see the Confirmation & Attestation page[0m                                                [90m# TMOSubmission.user_will_see_the_Confirmation_Attestation_page()[0m
+    [32mAnd [0m[32muser selects Yes for Disclaimer[0m                                                                  [90m# TMOSubmission.user_selects_Yes_for_Disclaimer()[0m
+    [32mAnd [0m[32muser selects I Attest checkbox[0m                                                                   [90m# TMOSubmission.user_selects_I_Attest_checkbox()[0m
+    [32mWhen [0m[32muser clicks on Submit button on confirmation page[0m                                               [90m# TMOSubmission.user_clicks_on_Submit_button_on_confirmation_page()[0m
+    [32mThen [0m[32muser should see the Confirmation pop-up message[0m                                                 [90m# TMOSubmission.user_should_see_the_Confirmation_pop_up_message()[0m
+#Author: Mohammad A Abbasi
+#Email : mohammad_a_abbasi@optum.com
+Feature: Member discharge from portal
+  
+  In order to allow a patient to discharge from facility
+
+  @Discharge
+  Scenario Outline: Verify TMA Discharge                                              [90m# features/PE_Smoke/CTMADischarge.feature:9[0m
+    [36mAnd [0m[36mSelects ReviewOnline[0m
+    [36mAnd [0m[36mselect View my Census radio button[0m
+    [36mAnd [0m[36mclick on the Continue button[0m
+    [36mAnd [0m[36min the next page click on the MyPatient is not on the census tab[0m
+    [36mAnd [0m[36muser is in the patient list page[0m
+    [36mAnd [0m[36mselect the Discharge hyperlink of "<MemName>" for member[0m
+    [36mAnd [0m[36mUser sees the Discharge form[0m
+    [36mAnd [0m[36muser click on mdsearch button[0m
+    [36mAnd [0m[36muser select the MD from the dialog box[0m
+    [36mAnd [0m[36muser enter the primary diagnosis code as "<primaryDiag>" and  "<description>"[0m
+    [36mAnd [0m[36muser enter the Discharge Date as "<dischargedate>"[0m
+    [36mAnd [0m[36muser enter Days/Session used as "<units>"[0m
+    [36mAnd [0m[36muser select Discharge Disposition code as "<dischargecode>"[0m
+    [36mAnd [0m[36muser click on attestation check box[0m
+    [36mAnd [0m[36mUser select No in Schedule followup[0m
+    [36mWhen [0m[36muser click on submit button[0m
+    [36mThen [0m[36muser should see the 'Quick Cert Confirmation' page[0m
+
+    Examples: 
+[34mCurrent Page URL ishttps://ohpe-test2.optum.com/qc/discharge?qcId=5345[0m
+
+  @Discharge
+  Scenario Outline: Verify TMA Discharge                                                        [90m# features/PE_Smoke/CTMADischarge.feature:32[0m
+    [32mAnd [0m[32mSelects ReviewOnline[0m                                                                    [90m# NavigationPEQualificatio.selectMenuLink()[0m
+    [32mAnd [0m[32mselect View my Census radio button[0m                                                      [90m# TMOSubmission.select_View_my_Census_radio_button()[0m
+    [32mAnd [0m[32mclick on the Continue button[0m                                                            [90m# TMOSubmission.click_on_the_Continue_button()[0m
+    [32mAnd [0m[32min the next page click on the MyPatient is not on the census tab[0m                        [90m# TMOSubmission.in_the_next_page_click_on_the_MyPatient_is_not_on_the_census_tab()[0m
+    [32mAnd [0m[32muser is in the patient list page[0m                                                        [90m# TMOSubmission.user_is_in_the_patient_list_page()[0m
+    [32mAnd [0m[32mselect the Discharge hyperlink of "[0m[32m[1mFIORENTINO_DINA[0m[32m" for member[0m                          [90m# TMADischarge.select_the_Discharge_hyperlink_of_for_member(String)[0m
+    [32mAnd [0m[32mUser sees the Discharge form[0m                                                            [90m# TMADischarge.user_sees_the_Discharge_form()[0m
+    [32mAnd [0m[32muser click on mdsearch button[0m                                                           [90m# TMADischarge.user_click_on_mdsearch_button()[0m
+    [32mAnd [0m[32muser select the MD from the dialog box[0m                                                  [90m# TMADischarge.user_select_the_MD_from_the_dialog_box()[0m
+    [32mAnd [0m[32muser enter the primary diagnosis code as "[0m[32m[1mF40.00-Agoraphobia[0m[32m" and  "[0m[32m[1mF40.00-Agoraphobia[0m[32m"[0m [90m# TMADischarge.user_enter_the_primary_diagnosis_code_as_and(String,String)[0m
+    [32mAnd [0m[32muser enter the Discharge Date as "[0m[32m[1m06/28/2018[0m[32m"[0m                                           [90m# TMADischarge.user_enter_the_Discharge_Date_as(String)[0m
+    [32mAnd [0m[32muser enter Days/Session used as "[0m[32m[1m1[0m[32m"[0m                                                     [90m# TMADischarge.user_enter_Days_Session_used_as(String)[0m
+    [32mAnd [0m[32muser select Discharge Disposition code as "[0m[32m[1mFoster Care[0m[32m"[0m                                 [90m# TMADischarge.user_select_Discharge_Disposition_code_as(String)[0m
+    [32mAnd [0m[32muser click on attestation check box[0m                                                     [90m# TMADischarge.user_click_on_attestation_check_box()[0m
+    [32mAnd [0m[32mUser select No in Schedule followup[0m                                                     [90m# TMADischarge.user_select_No_in_Schedule_followup()[0m
+    [32mWhen [0m[32muser click on submit button[0m                                                            [90m# TMADischarge.user_click_on_submit_button()[0m
+    [32mThen [0m[32muser should see the 'Quick Cert Confirmation' page[0m                                     [90m# TMADischarge.user_should_see_the_Quick_Cert_Confirmation_page()[0m

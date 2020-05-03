@@ -1,0 +1,58 @@
+package com.optum.icube.qc.page;
+
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+public class TMOMedicationPage extends BasePage{
+
+    @FindBy(id = "haveMedications_Yes")
+	  private WebElement MbrhaveMediYes;
+	@FindBy(id = "haveMedications_No")
+	  private WebElement MbrhaveMediNo;
+  @FindBy(id = "medicationNameList0")
+	  private WebElement MediDropdown;
+  @FindBy(id = "frequency0")
+	  private WebElement DoseFreq;
+	@FindBy(id = "route_admin0")
+	  private WebElement RouteOfAdmin;
+  @FindBy(id = "medicationStartDate0")
+	  private WebElement StartDatefield;
+  @FindBy(id = "medicationEndDate0")
+	  private WebElement EndDatefield;
+  @FindBy(id = "rx_yes0")
+	  private WebElement PrescribedYes;
+	@FindBy(id = "rx_no0")
+	  private WebElement PrescribedNo;
+	@FindBy(id = "vitals_prov_details0")
+	  private WebElement MediComments;
+	@FindBy(id = "btnAddMedication")
+	  private WebElement AddMedication;
+	@FindBy(id = "barriers_yes")
+	  private WebElement BarrierYes;
+	@FindBy(id = "barriers_no")
+	  private WebElement BarrierNo;
+  @FindBy(id = "textarea_circum")
+	  private WebElement IdentifyBarrierIssue;
+	@FindBy(id = "otherPrimary")
+	  private WebElement OtherBarrierIssue;
+	@FindBy(id = "actions_taken")
+	  private WebElement ActionsTaken;
+	@FindBy(id = "medicationTabNextButton")
+	  private WebElement medicationTabNextButton;
+	
+	
+	public void provideMediDetails() throws InterruptedException{
+		if (waitForAjaxResponse()&&(waitForElementFrame(medicationTabNextButton, 3000))){
+            Thread.sleep(3000);
+		}
+		Thread.sleep(4000);
+		((JavascriptExecutor)webDriver).executeScript("document.getElementById('haveMedications_No').click()");
+		//MbrhaveMediNo.click();
+		((JavascriptExecutor)webDriver).executeScript("document.getElementById('medicationTabNextButton').click()");
+		//medicationTabNextButton.click();
+		Thread.sleep(3000);
+			
+	}
+
+}

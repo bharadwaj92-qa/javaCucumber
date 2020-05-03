@@ -1,0 +1,14 @@
+#appUrl=https://test-healthid.optum.com/tb/app/index.html?TARGET=https%3A%2F%2Fohpe-test3.optum.com%2Ftrans%2FoptumLoggedIn.uol&relyingAppId=OHPE68865#/login
+appUrl=https://ohpe-test3.optum.com/trans/loginUser.uol
+optumId=jsharma1
+password=Goal2018
+Rally_Url=
+Rally_UserName=
+enviornement_run=QA
+Feature_to_run=TMA,TMO,Discharge
+Excel_file_location=C://ATDD_PE_QA//Excel_Data
+Data_file_location=C://ATDD_PE_QA//FeatureFiles
+Error_file_location=C://ATDD_PE_QA
+Server_Detail=appsrr
+User_Name=sid
+Password=sidpass

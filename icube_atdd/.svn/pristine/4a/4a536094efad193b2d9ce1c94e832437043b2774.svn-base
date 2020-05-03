@@ -1,0 +1,25 @@
+package com.optum.icube.qc.page;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
+/***
+ * 
+ * @author prao1012 This is HTML DOM page for Provider Express Main Header after
+ *         login
+ *
+ */
+
+public class PEMainMenu extends BasePage {
+
+	/*
+	 * We need to pass the MENU link text to this method
+	 */
+	public void clickMenuLink(String menuLink) {
+
+			waitForElementFrame(By.linkText(menuLink), 30000);
+			WebElement element = webDriver.findElement(By.linkText(menuLink));
+			element.click();
+	}
+
+}

@@ -1,0 +1,17 @@
+#Shiva Sankara Rao (prao1012)
+
+
+#appUrl=https://ohpe-test2.optum.com/trans/loginUser.uol
+appUrl=http://localhost:8082/trans/optumLoggedIn.uol
+Environment=local
+PE_Environment=
+sause_username=prao1012
+sause_key=fd45778e-9709-4f98-99b9-148c2654f383
+optumId=shivasankar_pabbu@optum.com
+password=Tryagain$677
+Rally_Url=
+Rally_UserName=
+PE_Environment=QA2
+Browser=firefox
+
+
